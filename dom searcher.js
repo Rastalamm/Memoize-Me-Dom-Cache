@@ -2,19 +2,19 @@ function domElementBank(elementName){
 
   var elementListObj = {};
 
-  var searchDom = function (elementName){
+  return {
+    searchDom : searchDom
+  }
 
-   for ( key in elementListObj ){
+  function searchDom (){
 
-      if(elementListObj[key]){
-        return elementListObj[key];
-      }
-      else{
-        elementListObj.elementName = document.querySelector(elementName);
-      }
+    if ( elementName in elementListObj ){
+      return elementListObj[elementName];
     }
-    return {
-      searchDom : searchDom
+    else{
+      elementListObj[elementName] = document.querySelector(elementName);
+      return elementListObj;
     }
   }
+
 }
