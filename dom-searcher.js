@@ -3,14 +3,11 @@
 
   function domElementBank(){
     var elementListCache = {};
-    var err = null;
 
     function searchDom (selector){
-      //validate input is a string
 
       if(typeof selector !== 'string'){
-        err = new TypeError('Your input needs to be a string');
-        return err;
+        throw new TypeError('Your input needs to be a string');
       }
 
       if ( selector in elementListCache ){
