@@ -1,26 +1,20 @@
-function domElementBank(){
+function domElementBank(elementName){
 
-  var elementList = {};
+  var elementListObj = {};
 
+  var searchDom = function (elementName){
 
-  var storeCache = function (elementName){
+   for ( key in elementListObj ){
 
-    document.querySelector(elementName);
-
+      if(elementListObj[key]){
+        return elementListObj[key];
+      }
+      else{
+        elementListObj.elementName = document.querySelector(elementName);
+      }
+    }
+    return {
+      searchDom : searchDom
+    }
   }
-
-
-  //searching the object that was created.
-  var searchCache = function(elementList){
-
-
-
-
-
-
-  return {
-    storeCache : storeCache,
-    searchCache : searchCache
-  }
-
 }
