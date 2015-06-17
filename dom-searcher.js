@@ -1,4 +1,4 @@
-function domElementBank(elementName){
+function domElementBank(){
 
   var elementListObj = {};
 
@@ -6,8 +6,7 @@ function domElementBank(elementName){
     searchDom : searchDom
   }
 
-  function searchDom (){
-
+  function searchDom (elementName){
     if ( elementName in elementListObj ){
       return elementListObj[elementName];
     }
