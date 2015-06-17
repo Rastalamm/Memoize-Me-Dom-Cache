@@ -1,19 +1,29 @@
-function domElementBank(){
+(function(){
+  window.DomElementBank = domElementBank();
 
-  var elementListObj = {};
+  function domElementBank(){
+    var elementListCache = {};
+    var err = null;
 
-  return {
-    searchDom : searchDom
-  }
+    function searchDom (selector){
+      //validate input is a string
 
-  function searchDom (elementName){
-    if ( elementName in elementListObj ){
-      return elementListObj[elementName];
+      if(typeof selector !== 'string'){
+        err = new TypeError('Your input needs to be a string');
+        return err;
+      }
+
+      if ( selector in elementListCache ){
+        return elementListCache[selector];
+      }
+      else{
+        elementListCache[selector] = document.querySelector(selector);
+        return elementListCache;
+      }
     }
-    else{
-      elementListObj[elementName] = document.querySelector(elementName);
-      return elementListObj;
+
+    return {
+      searchDom : searchDom
     }
   }
-
-}
+})();
